@@ -1,0 +1,17 @@
+.item {
+    position: absolute;
+    width: 50px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--secondary-text-color);
+    color: var(--secondary-text-color);
+    background-color: var(--button-bg-color);
+
+    span {
+        color: #eee;
+    }
+}

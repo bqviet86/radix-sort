@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .container {
+        position: relative;
+        margin: 50px auto;
+        width: var(--width-layout);
+        max-width: calc(100% - 16px);
+        min-height: calc(100vh - 100px);
+        border-radius: 6px;
+        background-color: var(--primary-bg-color);
+    }
+}

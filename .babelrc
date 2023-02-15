@@ -1,0 +1,21 @@
+{
+    "plugins": [
+        [
+            "module-resolver",
+            {
+                "alias": {
+                    "~": "./src"
+                }
+            }
+        ],
+        [
+            "prismjs",
+            {
+                "languages": ["javascript", "css", "markup"],
+                "plugins": ["line-numbers", "line-highlight"],
+                "theme": "okaidia",
+                "css": true
+            }
+        ]
+    ]
+}

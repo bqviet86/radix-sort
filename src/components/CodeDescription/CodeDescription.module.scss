@@ -1,0 +1,69 @@
+.wrapper {
+    position: absolute;
+    inset: auto 0 0 auto;
+    margin: auto 0 0;
+    max-width: calc(100% - 16px);
+    overflow: hidden;
+
+    @media (max-width: 58.5em) {
+        position: fixed;
+        inset: auto 8px 50px auto;
+    }
+
+    .show-btn {
+        position: absolute;
+        inset: auto 8px 8px auto;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.6rem;
+        border-radius: 50%;
+        color: var(--primary-text-color);
+        background-color: var(--secondary-bg-color);
+        cursor: pointer;
+    }
+
+    .codeDesc-wrap {
+        position: relative;
+        padding: 8px 8px 0;
+        border-radius: 6px;
+        background-color: var(--secondary-bg-color);
+        transform: translateX(100%);
+        transition: all 0.3s ease-in-out;
+
+        &.show {
+            transform: translateX(0);
+        }
+
+        .desc {
+            margin-top: 12px;
+            padding: 0 32px 0 8px;
+            height: 24px;
+            font-size: 1.4rem;
+            color: var(--primary-text-color);
+
+            @media (max-width: 30em) {
+                height: 20px;
+                font-size: 1.3rem;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            border-radius: 0 6px 0 12px;
+            color: var(--primary-text-color);
+            background-color: var(--primary-bg-color);
+            cursor: pointer;
+        }
+    }
+}
