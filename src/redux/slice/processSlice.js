@@ -19,7 +19,7 @@ const processSlice = createSlice({
                 })),
                 code: {
                     description: 'Starting...',
-                    highlight: '1',
+                    highlight: '3-5, 8',
                 },
             })
 
@@ -28,7 +28,7 @@ const processSlice = createSlice({
                 let count = 0
 
                 process.push({
-                    list: process[process.length - 1].list.map((item) => ({
+                    list: process.at(-1).list.map((item) => ({
                         ...item,
                         digit: i,
                     })),
@@ -39,7 +39,7 @@ const processSlice = createSlice({
                             (i === 2 && 'Hundreds') ||
                             (i === 3 && 'Thousands')
                         }`,
-                        highlight: '2',
+                        highlight: '11-12',
                     },
                 })
 
@@ -48,7 +48,7 @@ const processSlice = createSlice({
 
                     process.push({
                         // eslint-disable-next-line no-loop-func
-                        list: process[process.length - 1].list.map((item, index) => {
+                        list: process.at(-1).list.map((item, index) => {
                             if (index === list[j].index) {
                                 return {
                                     area: 'bucket',
@@ -62,7 +62,7 @@ const processSlice = createSlice({
                         }),
                         code: {
                             description: `Moving ${list[j].value} to bucket no ${digit}`,
-                            highlight: '3-4',
+                            highlight: '14-17',
                         },
                     })
 
@@ -78,7 +78,7 @@ const processSlice = createSlice({
 
                             process.push({
                                 // eslint-disable-next-line no-loop-func
-                                list: process[process.length - 1].list.map((item, index) => {
+                                list: process.at(-1).list.map((item, index) => {
                                     if (index === buckets[digit][j].index) {
                                         return {
                                             area: 'list',
@@ -98,7 +98,7 @@ const processSlice = createSlice({
                                 }),
                                 code: {
                                     description: `Restoring element to position ${count} in the list`,
-                                    highlight: '5-7',
+                                    highlight: '19',
                                 },
                             })
 
@@ -111,7 +111,7 @@ const processSlice = createSlice({
             }
 
             process.push({
-                list: process[process.length - 1].list.map((item) => ({
+                list: process.at(-1).list.map((item) => ({
                     ...item,
                     digit: 4,
                 })),

@@ -52,7 +52,7 @@ function CodeDescription() {
             </div>
             <div className={cx('codeDesc-wrap', { show: showCodeDesc })}>
                 <div className={cx('desc')}>{desc}</div>
-                <Code code={RADIX_SORT_CODE_DESCRIPTION} lineHighlight={lineHighlight} />
+                <Code language="js" code={RADIX_SORT_CODE_DESCRIPTION} lineHighlight={lineHighlight} />
                 <div className={cx('close-btn')} onClick={handleHideCodeDesc}>
                     <Icon icon="ph:x-bold" />
                 </div>

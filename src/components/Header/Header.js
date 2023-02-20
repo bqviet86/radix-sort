@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind'
-import { Icon } from '@iconify/react'
-import { useState } from 'react'
+// import { Icon } from '@iconify/react'
+// import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Menu from '~/components/Menu'
-import Code from '~/components/Code'
-import { RADIX_SORT_CODE } from '~/constants'
+// import Code from '~/components/Code'
+// import { RADIX_SORT_CODE } from '~/constants'
 import { sortSelector } from '~/redux/selectors'
 import { currentStepSlice, sortSlice } from '~/redux/slice'
 import styles from './Header.module.scss'
@@ -16,7 +16,7 @@ function Header() {
     const dispatch = useDispatch()
     const sort = useSelector(sortSelector)
 
-    const [showFullCode, setShowFullCode] = useState(false)
+    // const [showFullCode, setShowFullCode] = useState(false)
 
     const handlePlaySort = () => {
         if (!sort) {
@@ -25,17 +25,17 @@ function Header() {
         }
     }
 
-    const handleShowFullCode = () => {
-        setShowFullCode(true)
-    }
+    // const handleShowFullCode = () => {
+    //     setShowFullCode(true)
+    // }
 
-    const handleHideFullCode = () => {
-        setShowFullCode(false)
-    }
+    // const handleHideFullCode = () => {
+    //     setShowFullCode(false)
+    // }
 
-    const handleStopPropagation = (e) => {
-        e.stopPropagation()
-    }
+    // const handleStopPropagation = (e) => {
+    //     e.stopPropagation()
+    // }
 
     return (
         <>
@@ -48,23 +48,23 @@ function Header() {
                         <div className={cx('btn', 'primary')} onClick={handlePlaySort}>
                             Sort
                         </div>
-                        <div className={cx('btn')} onClick={handleShowFullCode}>
+                        {/* <div className={cx('btn')} onClick={handleShowFullCode}>
                             Full code
-                        </div>
+                        </div> */}
                         <Menu>
                             <div className={cx('btn')}>Setting</div>
                         </Menu>
                     </div>
                 </div>
             </header>
-            <div className={cx('overlay', { show: showFullCode })} onClick={handleHideFullCode}>
+            {/* <div className={cx('overlay', { show: showFullCode })} onClick={handleHideFullCode}>
                 <div className={cx('full-code')} onClick={handleStopPropagation}>
                     <div className={cx('close-btn')} onClick={handleHideFullCode}>
                         <Icon icon="ph:x-bold" />
                     </div>
                     <Code title="Radix sort (Js)" language="js" code={RADIX_SORT_CODE} />
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }

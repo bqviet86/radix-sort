@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import Prism from 'prismjs'
+import 'prism-themes/themes/prism-one-dark.min.css'
 
 import styles from './Code.module.scss'
 
@@ -28,24 +29,24 @@ function Code({ title = '', language = 'text', code, lineNumbers = true, lineHig
             {title && (
                 <div className={cx('header')}>
                     <h2 className={cx('title')}>{title}</h2>
-                    {copied ? (
-                        <button className={cx('copy-btn')}>
-                            <Icon icon="ic:round-check" />
-                            Copied!
-                        </button>
-                    ) : (
-                        <CopyToClipboard text={code.trim()} onCopy={handleCopy}>
-                            <button className={cx('copy-btn')}>
-                                <Icon icon="fluent:document-copy-48-regular" />
-                                Copy code
-                            </button>
-                        </CopyToClipboard>
-                    )}
                 </div>
             )}
             <pre className={cx('code-wrap', { lineNumbers, 'line-numbers': lineNumbers })} data-line={lineHighlight}>
                 <code className={`language-${language}`}>{code.trim()}</code>
             </pre>
+            {copied ? (
+                <button className={cx('copy-btn')}>
+                    <Icon icon="ic:round-check" />
+                    Copied!
+                </button>
+            ) : (
+                <CopyToClipboard text={code.trim()} onCopy={handleCopy}>
+                    <button className={cx('copy-btn')}>
+                        <Icon icon="fluent:document-copy-48-regular" />
+                        Copy
+                    </button>
+                </CopyToClipboard>
+            )}
         </div>
     )
 }
