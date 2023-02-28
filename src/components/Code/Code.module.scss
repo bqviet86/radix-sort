@@ -40,7 +40,6 @@
         margin-top: 0;
         font-size: 1.4rem;
         background: var(--dark-color);
-        overflow-y: auto;
 
         @media (max-width: 30em) {
             font-size: 1.3rem;
@@ -53,6 +52,7 @@
 
         div {
             margin-top: 12px;
+            padding: 0;
             background: rgba(62, 68, 81, 0.8);
             z-index: 1;
         }
