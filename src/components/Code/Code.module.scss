@@ -10,6 +10,14 @@
         opacity: 1;
     }
 
+    @media (max-width: 87.5em) {
+        height: 470px;
+    }
+
+    @media (max-width: 69.75em) {
+        height: 210px;
+    }
+
     .header {
         margin-bottom: 4px;
         display: flex;
