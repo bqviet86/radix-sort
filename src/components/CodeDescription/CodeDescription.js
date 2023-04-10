@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
 import { Icon } from '@iconify/react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import Code from '~/components/Code'
@@ -17,7 +17,7 @@ function CodeDescription() {
     const firstRun = useSelector(firstRunSelector)
 
     const [showCodeDesc, setShowCodeDesc] = useState(false)
-    const [desc, setDesc] = useState('')
+    const [desc, setDesc] = useState([])
     const [lineHighlight, setLineHighlight] = useState('')
 
     useEffect(() => {
@@ -31,7 +31,7 @@ function CodeDescription() {
             setDesc(process[currentStep].code.description)
             setLineHighlight(process[currentStep].code.highlight)
         } else {
-            setDesc('')
+            setDesc([])
             setLineHighlight('')
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,7 +51,14 @@ function CodeDescription() {
                 <Icon icon="tabler:arrow-left" />
             </div>
             <div className={cx('codeDesc-wrap', { show: showCodeDesc })}>
-                <div className={cx('desc')}>{desc}</div>
+                <div className={cx('desc')}>
+                    {desc.map((text, index) => (
+                        <React.Fragment key={index}>
+                            {text}
+                            {index < desc.length - 1 && <br />}
+                        </React.Fragment>
+                    ))}
+                </div>
                 <Code language="js" code={RADIX_SORT_CODE_DESCRIPTION} lineHighlight={lineHighlight} />
                 <div className={cx('close-btn')} onClick={handleHideCodeDesc}>
                     <Icon icon="ph:x-bold" />

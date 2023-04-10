@@ -39,15 +39,31 @@
         }
 
         .desc {
-            margin-top: 12px;
-            padding: 0 32px 0 8px;
-            height: 24px;
+            position: relative;
+            margin-top: 32px;
+            padding: 3px 0 0 8px;
+            height: 48px;
             font-size: 1.4rem;
+            border-radius: 4px;
             color: var(--primary-text-color);
+            background-color: var(--dark-color);
 
             @media (max-width: 30em) {
-                height: 20px;
+                padding-top: 1px;
+                height: 40px;
                 font-size: 1.3rem;
+            }
+
+            &::before {
+                content: 'Description:';
+                position: absolute;
+                inset: auto 0 calc(100% + 10px) 0;
+                font-size: 1.6rem;
+                line-height: 20px;
+
+                @media (max-width: 30em) {
+                    font-size: 1.4rem;
+                }
             }
         }
 

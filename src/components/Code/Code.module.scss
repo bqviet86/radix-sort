@@ -1,6 +1,6 @@
 .wrapper {
     position: relative;
-    margin-top: 7px;
+    margin-top: 8px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -11,11 +11,11 @@
     }
 
     @media (max-width: 87.5em) {
-        height: 470px;
+        height: 424px;
     }
 
     @media (max-width: 69.75em) {
-        height: 210px;
+        height: 166px;
     }
 
     .header {

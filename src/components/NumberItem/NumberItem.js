@@ -13,27 +13,34 @@ function NumberItem({ index, number, speed, mobile, state }) {
     const initStyle = {
         pc: { inset: `0 auto auto ${15 + 60 * index}px` },
         mobile: { inset: `${34 * index}px auto auto calc(100% - 58px)` },
+        // mobile: { inset: `${34 * index}px auto auto 8px` },
     }
     const [style, setStyle] = useState(mobile ? initStyle.mobile : initStyle.pc)
 
     const numberArr = `${number}`.split('')
 
     useEffect(() => {
-        if (state.area === 'bucket') {
+        if (state.area === 'list') {
+            setStyle(
+                mobile
+                    ? {
+                          inset: `${34 * state.position}px auto auto calc(100% - 58px)`,
+                          // inset: `${34 * state.position}px auto auto 8px`,
+                      }
+                    : { inset: `0 auto auto ${15 + 60 * state.position}px` },
+            )
+        } else if (state.area === 'bucket') {
             setStyle(
                 mobile
                     ? {
                           inset: `${60 * state.position}px auto auto ${66 + 34 * state.level}px`,
                           rotate: '90deg',
                           transformOrigin: 'top left',
+                          // inset: `${60 * state.position}px auto auto calc(100% - ${116 + 34 * state.level}px)`,
+                          // rotate: '-90deg',
+                          // transformOrigin: 'top right',
                       }
                     : { inset: `calc(100% - ${54 + 30 * state.level}px) auto auto ${15 + 60 * state.position}px` },
-            )
-        } else if (state.area === 'list') {
-            setStyle(
-                mobile
-                    ? { inset: `${34 * state.position}px auto auto calc(100% - 58px)` }
-                    : { inset: `0 auto auto ${15 + 60 * state.position}px` },
             )
         }
     }, [mobile, state])

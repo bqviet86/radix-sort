@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { currentStepSelector, firstRunSelector, processSelector, sortSelector } from '~/redux/selectors'
+import { currentStepSelector, processSelector, sortSelector } from '~/redux/selectors'
 import { currentStepSlice, sortSlice } from '~/redux/slice'
 import styles from './Footer.module.scss'
 
@@ -14,7 +14,6 @@ function Footer() {
     const process = useSelector(processSelector)
     const sort = useSelector(sortSelector)
     const currentStep = useSelector(currentStepSelector)
-    const firstRun = useSelector(firstRunSelector)
 
     const [sortState, setSortState] = useState('play')
     const rangeStep = 100 / process.length
@@ -32,50 +31,46 @@ function Footer() {
     }, [sort, currentStep])
 
     const handleFirstStep = () => {
-        if (!firstRun && currentStep > -1) {
+        if (currentStep > -1) {
             dispatch(sortSlice.actions.pause())
             dispatch(currentStepSlice.actions.update(-1))
         }
     }
 
     const handleLastStep = () => {
-        if (!firstRun && currentStep < process.length - 1) {
+        if (currentStep < process.length - 1) {
             dispatch(currentStepSlice.actions.update(process.length - 1))
         }
     }
 
     const handlePrevStep = () => {
-        if (!firstRun && currentStep > -1) {
+        if (currentStep > -1) {
             dispatch(currentStepSlice.actions.update(currentStep - 1))
         }
     }
 
     const handleNextStep = () => {
-        if (!firstRun && currentStep < process.length - 1) {
+        if (currentStep < process.length - 1) {
             dispatch(currentStepSlice.actions.update(currentStep + 1))
         }
     }
 
     const handleClickPlayBtn = () => {
-        if (!firstRun) {
-            if (sortState === 'play') {
-                dispatch(sortSlice.actions.pause())
-            } else if (sortState === 'pause') {
-                dispatch(sortSlice.actions.play())
-            } else {
-                dispatch(sortSlice.actions.play())
-                dispatch(currentStepSlice.actions.update(-1))
-            }
+        if (sortState === 'play') {
+            dispatch(sortSlice.actions.pause())
+        } else if (sortState === 'pause') {
+            dispatch(sortSlice.actions.play())
+        } else {
+            dispatch(sortSlice.actions.play())
+            dispatch(currentStepSlice.actions.update(-1))
         }
     }
 
     const handleChangeRange = (value) => {
-        if (!firstRun) {
-            const currentStepUpdate = Math.round(value / rangeStep - 1)
+        const currentStepUpdate = Math.round(value / rangeStep - 1)
 
-            if (currentStepUpdate !== currentStep) {
-                dispatch(currentStepSlice.actions.update(currentStepUpdate))
-            }
+        if (currentStepUpdate !== currentStep) {
+            dispatch(currentStepSlice.actions.update(currentStepUpdate))
         }
     }
 
@@ -90,7 +85,7 @@ function Footer() {
                         <Icon icon="tabler:player-track-prev-filled" style={{ fontSize: 16 }} />
                     </div>
                     <div className={cx('control-btn', 'play')} onClick={handleClickPlayBtn}>
-                        {sortState === 'play' && <Icon icon="material-symbols:pause-outline" />}
+                        {sortState === 'play' && <Icon icon="material-symbols:pause" />}
                         {sortState === 'pause' && <Icon icon="material-symbols:play-arrow" />}
                         {sortState === 'end' && <Icon icon="mdi:loop" />}
                     </div>

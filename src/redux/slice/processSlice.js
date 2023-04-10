@@ -18,13 +18,16 @@ const processSlice = createSlice({
                     digit: 4,
                 })),
                 code: {
-                    description: 'Starting...',
+                    description: ['Starting...'],
                     highlight: '3-5, 8',
                 },
             })
 
             for (let i = 0; i < maxDigits; i++) {
                 const buckets = Array.from({ length: 10 }, () => [])
+                const processDesc = `Processing the ${
+                    (i === 0 && 'Ones') || (i === 1 && 'Tens') || (i === 2 && 'Hundreds') || (i === 3 && 'Thousands')
+                }`
                 let count = 0
 
                 process.push({
@@ -33,12 +36,7 @@ const processSlice = createSlice({
                         digit: i,
                     })),
                     code: {
-                        description: `Processing the ${
-                            (i === 0 && 'Ones') ||
-                            (i === 1 && 'Tens') ||
-                            (i === 2 && 'Hundreds') ||
-                            (i === 3 && 'Thousands')
-                        }`,
+                        description: [processDesc],
                         highlight: '11-12',
                     },
                 })
@@ -61,7 +59,7 @@ const processSlice = createSlice({
                             return item
                         }),
                         code: {
-                            description: `Moving ${list[j].value} to bucket no ${digit}`,
+                            description: [`${processDesc}:`, `Moving ${list[j].value} to bucket no ${digit}`],
                             highlight: '14-17',
                         },
                     })
@@ -97,7 +95,10 @@ const processSlice = createSlice({
                                     return item
                                 }),
                                 code: {
-                                    description: `Restoring element to position ${count} in the list`,
+                                    description: [
+                                        `${processDesc}:`,
+                                        `Restoring ${buckets[digit][j].value} to position ${count} in the list`,
+                                    ],
                                     highlight: '19',
                                 },
                             })
@@ -116,7 +117,7 @@ const processSlice = createSlice({
                     digit: 4,
                 })),
                 code: {
-                    description: 'We are done!',
+                    description: ['We are done!'],
                     highlight: '',
                 },
             })
